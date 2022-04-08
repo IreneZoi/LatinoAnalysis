@@ -60,9 +60,9 @@ class PlotFactory:
     # _____________________________________________________________________________
     def makePlot(self, inputFile, outputDirPlots, variables, cuts, samples, plot, nuisances, legend, groupPlot):
 
-        print "=================="
-        print "==== makePlot ===="
-        print "=================="
+        print( "==================")
+        print( "==== makePlot ====")
+        print( "==================")
         
         self.defineStyle()
         
@@ -125,6 +125,7 @@ class PlotFactory:
         generalCounter = 0
 
         if os.path.isdir(inputFile):
+          print("isdir ", inputFile)
           # ONLY COMPATIBLE WITH OUTPUTS MERGED TO SAMPLE LEVEL!!
           fileIn = {}
           allFiles = os.listdir(inputFile)
@@ -137,10 +138,10 @@ class PlotFactory:
               
         else:
           fileIn = ROOT.TFile(inputFile, "READ")
-
+          print("fileIn ",fileIn)
         #---- save one TCanvas for every cut and every variable
         for cutName in self._cuts :
-          print "cut =", cutName
+          print( "cut =", cutName)
           for variableName, variable in self._variables.iteritems():
             if 'cuts' in variable and cutName not in variable['cuts']:
               continue
@@ -148,7 +149,7 @@ class PlotFactory:
             if type(fileIn) is not dict and not fileIn.GetDirectory(cutName+"/"+variableName):
               continue
               
-            print "variableName =", variableName
+            print( "variableName =", variableName)
 
             if not "divideByBinWidth" in variable.keys():
               variable["divideByBinWidth"] = 0
@@ -256,8 +257,8 @@ class PlotFactory:
               else:
                 histo = fileIn.Get(shapeName)
               if not histo: continue
-              print ' --> ', histo
-              print 'new_histo_' + sampleName + '_' + cutName + '_' + variableName
+              print( ' --> ', histo)
+              print( 'new_histo_' + sampleName + '_' + cutName + '_' + variableName)
               histos[sampleName] = histo.Clone('new_histo_' + sampleName + '_' + cutName + '_' + variableName)
               
               #print "     -> sampleName = ", sampleName, " --> ", histos[sampleName].GetTitle(), " --> ", histos[sampleName].GetName(), " --> ", histos[sampleName].GetNbinsX()
@@ -716,17 +717,25 @@ class PlotFactory:
             #
             #
             special_shapeName = cutName+"/"+variableName+'/histo_total' 
+            print("special_shapeName", special_shapeName)
             if type(fileIn) is dict:
               if 'total' in fileIn:
+                print(" total in fileIn")
                 histo_total = fileIn['total'].Get(special_shapeName)
+                print(histo_total)
               else:
+                print("total none")
                 histo_total = None
-            else:                                                                                                                                                                                  
-              histo_total = fileIn.Get(special_shapeName)
+            else:
+              print("no total in fileIn")
+              #histo_total = fileIn.Get(special_shapeName) #irene attempting!!
+              histo_total = None
+              print(histo_total)
 
             if variable['divideByBinWidth'] == 1 and histo_total != None:
               histo_total.Scale(1,"width")
-            print '--> histo_total = ', histo_total
+              print("scaled histo total")
+            print( '--> histo_total = ', histo_total)
             
             #                                  if there is "histo_total" there is no need of explicit nuisances
             if (not self._removeMCStat) or len(mynuisances.keys()) != 0 or histo_total!= None:
