@@ -242,6 +242,7 @@ def getSampleFiles(inputDir,Sample,absPath=False,rooFilePrefix='latino_',FromPos
 
     ##### Now get the files for Sample
     fileCmd = lsCmd+Dir+'/'+rooFilePrefix+Sample+'.root'
+    print 'fileCmd ',fileCmd
     if 'root://' in inputDir:
       fileCmd = lsCmd+Dir+'/ | grep '+rooFilePrefix+Sample+'.root' 
     proc    = subprocess.Popen(fileCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
@@ -254,6 +255,15 @@ def getSampleFiles(inputDir,Sample,absPath=False,rooFilePrefix='latino_',FromPos
       proc    = subprocess.Popen(fileCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
       out,err = proc.communicate()
       Files   = string.split(out)
+      if len(Files) == 0 :
+        print "Irene's exception for UL studies"
+        fileCmd = lsCmd+Dir+'/'+rooFilePrefix+Sample+'*.root'
+        if 'root://' in inputDir:
+          fileCmd = lsCmd+Dir+'/ | grep '+rooFilePrefix+Sample+'__part | grep root'
+        proc    = subprocess.Popen(fileCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
+        out,err = proc.communicate()
+        Files   = string.split(out)
+
     if len(Files) == 0 and not FromPostProc :
       print 'ERROR: No files found for sample ',Sample,' in directory ',Dir
       exit() 
