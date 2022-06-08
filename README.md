@@ -1,65 +1,30 @@
-The latinos framework is roughly divided in three parts.
+This branch is used for the private production of WV semileptonic aQGC samples. The NanoAODv7 were produced by Matteo and can be found in 
 
-# 1. Read miniAOD
-
-The code used to read and analyse miniAOD is documented here,
-
-    https://github.com/latinos/LatinoTrees/tree/master/AnalysisStep/test
-
-We produce simple ROOT trees from the data and MC miniAOD datasets. To limit the size of the trees we require the events to have at least one lepton that passes a very loose ID requirement.
-
-# 2. Latino trees post-processing
-
-As calibrations, efficiencies, NLO weights, etc, are often coming a bit late, we have a second processing step based on the previous trees, that allows us to modify the 4-vectors of objects (like leptons and jets) and recompute event kinematics, plugin efficiencies, add weights. This same post-processing is used to apply systematics like scale uncertainties (leptons, MET, jets) that require to modify the 4-vectors of objects. Once we have all the outputs of the second step we derive skimmed ROOT trees applying different selections, to reduce the size as deemed for a given analysis. The code used at this level is documented here,
-
-    https://github.com/latinos/LatinoAnalysis/tree/master/Gardener
-
-# 3. Analysis
-
-The following python code is used to produce plots, study backgrounds and produce data cards for computing significance and limits,
-
-    https://github.com/latinos/PlotsConfigurations
-
-As a starting point one can try this WW configuration,
-
-    https://github.com/latinos/PlotsConfigurations/tree/master/Configurations/ControlRegions/WW/Full2016
-
-The first step reads the post-processed latino trees and produces histograms for several variables and phase spaces,
-
-    mkShapes.py --pycfg=configuration.py \
-                --inputDir=/eos/cms/store/group/phys_higgs/cmshww/amassiro/Full2016/Feb2017_summer16/MCl2looseCut__hadd__bSFL2pTEffCut__l2tight \
-                --batchSplit=Cuts,Samples \
-                --doBatch=True \
-                --batchQueue=8nh
-                
-    mkBatch.py --status
-
-Once the previous jobs have finished we hadd the outputs,
-
-    mkShapes.py --pycfg=configuration.py \
-                --inputDir=/eos/cms/store/group/phys_higgs/cmshww/amassiro/Full2016/Feb2017_summer16/MCl2looseCut__hadd__bSFL2pTEffCut__l2tight \
-                --batchSplit=Cuts,Samples \
-                --doHadd=True
-
-Now we are ready to make data/MC comparison plots,
-
-    mkPlot.py --inputFile=rootFile/plots_WW.root \
-              --showIntegralLegend=1
-              
-To move or copy the plots to the web,
-
-    mkdir $HOME/www/latino
-    pushd $HOME/www/latino
-    wget https://raw.githubusercontent.com/latinos/PlotsConfigurations/master/index.php
-    popd
-    cp plotWW/*png $HOME/www/latino/.
+    /eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/
     
-Time to check and share the results.
+To be in sync with the SM semilep analysis SMP-21-013 use the following instructions for the installation:
 
-    https://piedra.web.cern.ch/piedra/latino/
+    cmsrel CMSSW_10_6_4
+    cd CMSSW_10_6_4/src/
+    cmsenv
+    git clone --branch 13TeV https://github.com/latinos/setup.git LatinosSetup
+    source $CMSSW_BASE/src/LatinosSetup/Functions.sh
+    source LatinosSetup/SetupShapeOnly.sh 
+    scram b -j4
+    # remember to setup your log directory :)
+    git remote add UniMiB https://github.com/UniMiBAnalyses/LatinoAnalysis.git
+    git fetch UniMiB VBS_skim
+    git checkout UniMiB/VBS_skim
+    git checkout -b VBS_skim_prepDavide ca28a5e
+    cd /afs/cern.ch/work/i/izoi/VBSanalysis/CMSSW_10_6_4/src/LatinoAnalysis/
+    
+Add the needed samples and cross sections in ```NanoGardener/python/framework/samples/``` eg Summer16_102X_nAODv7.py and samplesCrossSections2016.py for 2016.
 
-# 4. Tutorials
+To submit the jobs:
 
-In the twiki below we have documented the tutorials that have been written for different pieces of the latino framework.
+    mkPostProc.py -p ANNOmc -i nomeSTEPiniziale -s nomeSTEPdaProcessare -T sample1,sample2,sample3 -b -Q microcentury # -i is not needed at the first step
+    mkPostProc.py -p Summer16_102X_nAODv7_Full2016v7 -s MCl1loose2016v7 -T WminusTo2LWminusTo2JJJ_aQGC 
 
-    https://twiki.cern.ch/twiki/bin/view/CMS/LatinosFrameworkTutorials
+The output files will appear in ```/eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/``` in the corresponding period subdirectory
+
+Steps and samples are summarized here https://docs.google.com/spreadsheets/d/1MMBBI677xkzVJ2ktDHf1-TIVEz1YsCfCfMMDmu5EOu4/edit?usp=sharing
