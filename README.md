@@ -27,4 +27,6 @@ To submit the jobs:
 
 The output files will appear in ```/eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/``` in the corresponding period subdirectory
 
+*NB* Some steps are actually a chain of steps. For it to be properly executed, it is important that the name in ```VBSjjlnu_samples.py``` matches the one in the python files (samples location file and cross section file) in ```NanoGardener/python/framework/samples/```
+ 
 Steps and samples are summarized here https://docs.google.com/spreadsheets/d/1MMBBI677xkzVJ2ktDHf1-TIVEz1YsCfCfMMDmu5EOu4/edit?usp=sharing
