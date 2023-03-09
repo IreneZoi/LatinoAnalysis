@@ -994,6 +994,9 @@ samples['WpTo2J_ZTo2L_aQGC']       .extend( ['xsec=0.569',    'kfact=1.000',   '
 samples['WpTo2J_WmToLNu_aQGC']      .extend( ['xsec=17.91',    'kfact=1.000',   'ref=W' ])
 samples['WmToLNu_ZTo2J_aQGC']       .extend( ['xsec=0.7416',    'kfact=1.000',   'ref=W' ])
 
+#private VBS aQGC semilep 2016 with dipole recoil and new operators
+samples["WmTo2J_ZTo2L_aQGC_mg242"] = .extend( ['xsec=0.2258',    'kfact=1.000',   'ref=W' ])
+
 
 # HH_WWbb_bblnujj semileptonic 2016
 # FIXME: insert reference
