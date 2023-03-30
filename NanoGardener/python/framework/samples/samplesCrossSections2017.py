@@ -1082,6 +1082,11 @@ samples['WpTo2J_ZTo2L_aQGC']       .extend( ['xsec=0.569',    'kfact=1.000',   '
 samples['WpTo2J_WmToLNu_aQGC']      .extend( ['xsec=17.91',    'kfact=1.000',   'ref=W' ])
 samples['WmToLNu_ZTo2J_aQGC']       .extend( ['xsec=0.7416',    'kfact=1.000',   'ref=W' ])
 
+#private VBS aQGC semilep 2017 with dipole recoil and fixed operators
+samples["WpToLNu_WmTo2J_aQGC_eboliv2"] .extend( ['xsec=4.4',    'kfact=1.000',   'ref=W' ])
+samples["ZTo2L_ZTo2J_aQGC_eboliv2"] .extend( ['xsec=0.699',    'kfact=1.000',   'ref=W' ])
+samples["WpTo2J_ZTo2L_aQGC_eboliv2"] .extend( ['xsec=0.1702',    'kfact=1.000',   'ref=W' ])
+samples["WmTo2J_ZTo2L_aQGC_eboliv2"] .extend( ['xsec=0.06453',    'kfact=1.000',   'ref=W' ])
 
 # monoH dileptonic for FullRun2 analysis
 # Insert xsec value in pb for each mass point in samples.py
