@@ -999,7 +999,7 @@ samples["WpToLNu_WmTo2J_aQGC_eboliv2"] .extend( ['xsec=4.4',    'kfact=1.000',  
 samples["ZTo2L_ZTo2J_aQGC_eboliv2"] .extend( ['xsec=0.699',    'kfact=1.000',   'ref=W' ])
 samples["WpTo2J_ZTo2L_aQGC_eboliv2"] .extend( ['xsec=0.1702',    'kfact=1.000',   'ref=W' ])
 samples["WmTo2J_ZTo2L_aQGC_eboliv2"] .extend( ['xsec=0.06453',    'kfact=1.000',   'ref=W' ])
-samples['WmToLNu_WmTo2J_aQGC_eboliv2']      .extend( ['xsec=-1',    'kfact=1.000',   'ref=W' ])
+samples['WmToLNu_WmTo2J_aQGC_eboliv2']      .extend( ['xsec=0.08554',    'kfact=1.000',   'ref=W' ])
 samples['WpToLNu_ZTo2J_aQGC_eboliv2']       .extend( ['xsec=-1',    'kfact=1.000',   'ref=W' ])
 samples['WpToLNu_WpTo2J_aQGC_eboliv2']      .extend( ['xsec=-1',    'kfact=1.000',   'ref=W' ])
 samples['WpTo2J_WmToLNu_aQGC_eboliv2']      .extend( ['xsec=-1',    'kfact=1.000',   'ref=W' ])
