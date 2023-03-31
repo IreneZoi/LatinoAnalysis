@@ -633,6 +633,16 @@ Samples['WmToLNu_ZTo2J_aQGC']  =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos
 # private production
 Samples["WpToLNu_WmTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+Samples["WpTo2J_WmToLNu_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+Samples["WpToLNu_WpTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+Samples["WmToLNu_WmTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+Samples["WmToLNu_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+Samples["WpToLNu_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 Samples["ZTo2L_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 Samples["WpTo2J_ZTo2L_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
