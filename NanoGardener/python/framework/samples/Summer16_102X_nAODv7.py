@@ -675,13 +675,13 @@ Samples['ttH_H0Mf05_ToWWTo2L2Nu'] = {'nanoAOD' :'/ttHiggs0Mf05ph0ToWW_2LFilter_M
 ############
 
 #VBS Semileptonic aQGC samples MC 2016
-Samples["ZTo2L_ZTo2J_aQGC"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
+Samples['ZTo2L_ZTo2J_aQGC'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/ZTo2LZTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']}
-Samples["WmTo2J_ZTo2L_aQGC"] =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
+Samples['WmTo2J_ZTo2L_aQGC'] =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/WminusTo2JZTo2LJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']} 
-Samples["WpTo2J_ZTo2L_aQGC"] =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
+Samples['WpTo2J_ZTo2L_aQGC'] =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/WplusTo2JZTo2LJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']} 
-Samples["WmToLNu_WmTo2J_aQGC"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
+Samples['WmToLNu_WmTo2J_aQGC'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                 "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/WminusTo2LWminusTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']}
 Samples['WpToLNu_WpTo2J_aQGC'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                 "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/WplusTo2LWplusTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']}
@@ -693,35 +693,35 @@ Samples['WmToLNu_ZTo2J_aQGC']  = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/
                 "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2016/WminusTo2LZTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/']}
 
 #private VBS aQGC semilep 2016 with dipole recoil and new operators
-Samples["WpToLNu_WmTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WpTo2J_WmToLNu_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_WmToLNu_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WpToLNu_WpTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WpTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WmToLNu_WmTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WmToLNu_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WpToLNu_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["ZTo2L_ZTo2J_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['ZTo2L_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WpTo2J_ZTo2L_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples["WmTo2J_ZTo2L_aQGC_eboliv2"] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2016/2016_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 
 
 
-Samples["WmToLNu_WmTo2J"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuWminusTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103154/0000/']}
-Samples["WmToLNu_ZTo2J"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103216/0000/']}
-Samples["ZTo2L_ZTo2J"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/ZTo2LZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103407/0000/']}
-Samples["WpTo2J_WmToLNu"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JWminusToLNuJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103236/0000/']}
-Samples["WmTo2J_ZTo2L"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusTo2JZTo2LJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103133/0000/']}
-Samples["WpToLNu_ZTo2J"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103347/0000/']}
-Samples["WpTo2J_ZTo2L"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JZTo2LJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103256/0000/']}
-Samples["WpToLNu_WpTo2J"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWplusTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103326/0000/']}
+Samples['WmToLNu_WmTo2J'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuWminusTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103154/0000/']}
+Samples['WmToLNu_ZTo2J'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103216/0000/']}
+Samples['ZTo2L_ZTo2J'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/ZTo2LZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103407/0000/']}
+Samples['WpTo2J_WmToLNu'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JWminusToLNuJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103236/0000/']}
+Samples['WmTo2J_ZTo2L'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusTo2JZTo2LJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103133/0000/']}
+Samples['WpToLNu_ZTo2J'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuZTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103347/0000/']}
+Samples['WpTo2J_ZTo2L'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JZTo2LJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103256/0000/']}
+Samples['WpToLNu_WpTo2J'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWplusTo2JJJ_EWK_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103326/0000/']}
 
 Samples['WmTo2J_ZTo2L_dipoleRecoil'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusTo2JZTo2LJJ_dipoleRecoil_EWK_LO_SM_MJJ100PTJ10_TuneCP5_13TeV-madgraph-pythia8/VVjj_2016v7/210429_193117/0000/']}
@@ -744,12 +744,12 @@ Samples['ZTo2L_ZTo2J_dipoleRecoil'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch/
 
 
 # EWK W production
-Samples["EWK_LNuJJ"] = {'nanoAOD': '/EWK_LNuJJ_MJJ-120_13TeV-madgraph-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
-Samples["EWK_LNuJJ_herwig"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
+Samples['EWK_LNuJJ'] = {'nanoAOD': '/EWK_LNuJJ_MJJ-120_13TeV-madgraph-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
+Samples['EWK_LNuJJ_herwig'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 
                 "paths": ['/store/group/phys_higgs/cmshww/amassiro/HWWNano/Summer16_102X_nAODv7_Full2016v7/nanoAOD_tmp/LNuJJ_EWK_madgraph_herwigcpp_2016/VVjj_2016v7/210408_114406/0000']}
 
-Samples["EWK_LLJJ"] = {'nanoAOD': '/EWK_LLJJ_MLL-50_MJJ-120_13TeV-madgraph-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
-Samples["EWK_LLJJ_herwig"] = {'nanoAOD': '/EWK_LLJJ_MLL-50_MJJ-120_TuneEEC5_13TeV-madgraph-herwigpp_corrected/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
+Samples['EWK_LLJJ'] = {'nanoAOD': '/EWK_LLJJ_MLL-50_MJJ-120_13TeV-madgraph-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
+Samples['EWK_LLJJ_herwig'] = {'nanoAOD': '/EWK_LLJJ_MLL-50_MJJ-120_TuneEEC5_13TeV-madgraph-herwigpp_corrected/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'}
 
 
 #
@@ -757,15 +757,15 @@ Samples["EWK_LLJJ_herwig"] = {'nanoAOD': '/EWK_LLJJ_MLL-50_MJJ-120_TuneEEC5_13Te
 ## >Sample string for mkPostProd
 ## WmTo2J_ZTo2L_QCD,WmToLNu_WmTo2J_QCD,WmToLNu_ZTo2J_QCD,WpTo2J_WmToLNu_QCD,WpTo2J_ZTo2L_QCD,WpToLNu_WpTo2J_QCD,WpToLNu_ZTo2J_QCD,ZTo2L_ZTo2J_QCD,WpToLNu_WmTo2J_QCD
 ############
-Samples["WmToLNu_WmTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuWminusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103204/0000/']}
-Samples["WmToLNu_ZTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103226/0000/']}
-Samples["WpToLNu_WmTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWminusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103316/0000/']}
-Samples["ZTo2L_ZTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/ZTo2LZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103417/0000/']}
-Samples["WpTo2J_WmToLNu_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JWminusToLNuJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103246/0000/']}
-Samples["WmTo2J_ZTo2L_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusTo2JZTo2LJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103144/0000/']}
-Samples["WpToLNu_ZTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103357/0000/']}
-Samples["WpTo2J_ZTo2L_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JZTo2LJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103306/0000/']}
-Samples["WpToLNu_WpTo2J_QCD"] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWplusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103337/0000/']}
+Samples['WmToLNu_WmTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuWminusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103204/0000/']}
+Samples['WmToLNu_ZTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusToLNuZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103226/0000/']}
+Samples['WpToLNu_WmTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWminusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103316/0000/']}
+Samples['ZTo2L_ZTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/ZTo2LZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103417/0000/']}
+Samples['WpTo2J_WmToLNu_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JWminusToLNuJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103246/0000/']}
+Samples['WmTo2J_ZTo2L_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WminusTo2JZTo2LJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103144/0000/']}
+Samples['WpToLNu_ZTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuZTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103357/0000/']}
+Samples['WpTo2J_ZTo2L_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusTo2JZTo2LJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103306/0000/']}
+Samples['WpToLNu_WpTo2J_QCD'] = {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos/cms/', 'paths': ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/WplusToLNuWplusTo2JJJ_QCD_LO_SM_MJJ100PTJ10_TuneCUETP8M1_13TeV-madgraph-pythia8/VVjj_2016v6/200810_103337/0000/']}
 
 ####### polarized samples for EW WZ
 Samples['WZJJ_Inclusive'] = {'nanoAOD' :'/WZJJ_EWK_InclusivePolarization_TuneCUETP8M1_13TeV_madgraph-madspin-pythia8/RunIISummer16NanoAODv7-PUMoriond17_Nano02Apr2020_102X_mcRun2_asymptotic_v8-v1/NANOAODSIM'} 
