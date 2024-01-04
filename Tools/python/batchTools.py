@@ -353,6 +353,7 @@ class batchJobs :
              jdsFile.write('on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)\n')
              jdsFile.write('periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > (60*3))\n')
            jdsFile.write('request_cpus = '+str(REQUEST_CPUS)+'\n')
+           jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
            jdsFile.write('+JobFlavour = "'+queue+'"\n')
            jdsFile.write('queue\n')
            jdsFile.close()
@@ -445,6 +446,8 @@ class batchJobs :
        jds += 'output = $(JName).out\n'
        jds += 'error = $(JName).err\n'
        jds += 'log = $(JName).log\n'
+       jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
+       jds += 'MY.WantOS = "el7"\n'
        #jds += 'use_x509userproxy = true\n'
        jds += 'request_cpus = '+str(REQUEST_CPUS)+'\n'
        if CONDOR_ACCOUNTING_GROUP:
