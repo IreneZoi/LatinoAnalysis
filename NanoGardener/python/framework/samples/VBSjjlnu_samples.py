@@ -57,6 +57,9 @@ vbsjjlnu_samples_bkg = [
 
 #2016 samples 
 vbsjjlnu_samples_bkg += [
+     'ZZTo2L2Q',
+     'WZTo2L2Q',
+     'ZZTo2L2Q_AMCNLOFXFX',
     'DYJetsToLL_M-5to50_HT-70to100', # not exist 2016 DYJetsToLL_M-5to50 on das
     'DYJetsToLL_M-5to50_HT-100to200',
     'DYJetsToLL_M-5to50_HT-100to200_ext1',
@@ -99,7 +102,9 @@ vbsjjlnu_samples_signal = [ 'WmTo2J_ZTo2L','WmToLNu_WmTo2J','WmToLNu_ZTo2J','WpT
                      'WmTo2J_ZTo2L_aQGC', 'WmToLNu_WmTo2J_aQGC','WmToLNu_ZTo2J_aQGC','WpTo2J_WmToLNu_aQGC','WpTo2J_ZTo2L_aQGC',
                     'WpToLNu_WpTo2J_aQGC', 'WpToLNu_ZTo2J_aQGC','ZTo2L_ZTo2J_aQGC','WpToLNu_WmTo2J_aQGC',
                     'WmToLNuWmTo2J_EWKQCD','WpToLNuWpTo2J_EWKQCD','WmToLNuWpTo2J_EWKQCD','WpToLNuWmTo2J_EWKQCD',
-                    'WToLNuZTo2J_EWKQCD','WToJJZToLL_EWKQCD','ZToLLZToJJ_EWKQCD','WpToLNu_WmTo2J_aQGC_eboliv2','ZTo2L_ZTo2J_aQGC_eboliv2','WpTo2J_ZTo2L_aQGC_eboliv2','WmTo2J_ZTo2L_aQGC_eboliv2','WmToLNu_WmTo2J_aQGC_eboliv2','WpToLNu_ZTo2J_aQGC_eboliv2','WpToLNu_WpTo2J_aQGC_eboliv2','WpTo2J_WmToLNu_aQGC_eboliv2','WmToLNu_ZTo2J_aQGC_eboliv2']
+                    'WToLNuZTo2J_EWKQCD','WToJJZToLL_EWKQCD','ZToLLZToJJ_EWKQCD',
+                    'WpToLNu_WmTo2J_aQGC_eboliv2','ZTo2L_ZTo2J_aQGC_eboliv2','WpTo2J_ZTo2L_aQGC_eboliv2','WmTo2J_ZTo2L_aQGC_eboliv2','WmToLNu_WmTo2J_aQGC_eboliv2','WpToLNu_ZTo2J_aQGC_eboliv2','WpToLNu_WpTo2J_aQGC_eboliv2','WpTo2J_WmToLNu_aQGC_eboliv2','WmToLNu_ZTo2J_aQGC_eboliv2',
+                    'WpToLNu_WmTo2J_aQGC_eboliv2_official','ZTo2L_ZTo2J_aQGC_eboliv2_official','WpTo2J_ZTo2L_aQGC_eboliv2_official','WmTo2J_ZTo2L_aQGC_eboliv2_official','WmToLNu_WmTo2J_aQGC_eboliv2_official','WpToLNu_ZTo2J_aQGC_eboliv2_official','WpToLNu_WpTo2J_aQGC_eboliv2_official','WpTo2J_WmToLNu_aQGC_eboliv2_official','WmToLNu_ZTo2J_aQGC_eboliv2_official']
 
 vbsjjlnu_samples_qcdvv = ['WmTo2J_ZTo2L_QCD','WmToLNu_WmTo2J_QCD','WmToLNu_ZTo2J_QCD','WpTo2J_WmToLNu_QCD','WpTo2J_ZTo2L_QCD',
                 'WpToLNu_WpTo2J_QCD','WpToLNu_ZTo2J_QCD','ZTo2L_ZTo2J_QCD','WpToLNu_WmTo2J_QCD']

@@ -1082,7 +1082,7 @@ samples['WpTo2J_ZTo2L_aQGC']       .extend( ['xsec=0.569',    'kfact=1.000',   '
 samples['WpTo2J_WmToLNu_aQGC']      .extend( ['xsec=17.91',    'kfact=1.000',   'ref=W' ])
 samples['WmToLNu_ZTo2J_aQGC']       .extend( ['xsec=0.7416',    'kfact=1.000',   'ref=W' ])
 
-#private VBS aQGC semilep 2017 with dipole recoil and fixed operators
+# private VBS aQGC semilep with dipole recoil and fixed operators
 samples['WpToLNu_WmTo2J_aQGC_eboliv2'] .extend( ['xsec=4.4',    'kfact=1.000',   'ref=W' ])
 samples['ZTo2L_ZTo2J_aQGC_eboliv2'] .extend( ['xsec=0.699',    'kfact=1.000',   'ref=W' ])
 samples['WpTo2J_ZTo2L_aQGC_eboliv2'] .extend( ['xsec=0.1702',    'kfact=1.000',   'ref=W' ])
@@ -1092,6 +1092,19 @@ samples['WpToLNu_ZTo2J_aQGC_eboliv2']       .extend( ['xsec=0.5616',    'kfact=1
 samples['WpToLNu_WpTo2J_aQGC_eboliv2']      .extend( ['xsec=0.6741',    'kfact=1.000',   'ref=W' ])
 samples['WpTo2J_WmToLNu_aQGC_eboliv2']      .extend( ['xsec=4.412',    'kfact=1.000',   'ref=W' ])
 samples['WmToLNu_ZTo2J_aQGC_eboliv2']       .extend( ['xsec=0.2121',    'kfact=1.000',   'ref=W' ])
+
+# central mini and private nano VBS aQGC semilep with dipole recoil and new operators
+samples['WpToLNu_WmTo2J_aQGC_eboliv2_official'] .extend( ['xsec=4.4',    'kfact=1.000',   'ref=W' ])
+samples['ZTo2L_ZTo2J_aQGC_eboliv2_official'] .extend( ['xsec=0.699',    'kfact=1.000',   'ref=W' ])
+samples['WpTo2J_ZTo2L_aQGC_eboliv2_official'] .extend( ['xsec=0.1702',    'kfact=1.000',   'ref=W' ])
+samples['WmTo2J_ZTo2L_aQGC_eboliv2_official'] .extend( ['xsec=0.06453',    'kfact=1.000',   'ref=W' ])
+samples['WmToLNu_WmTo2J_aQGC_eboliv2_official']      .extend( ['xsec=0.08554',    'kfact=1.000',   'ref=W' ])
+samples['WpToLNu_ZTo2J_aQGC_eboliv2_official']       .extend( ['xsec=0.5616',    'kfact=1.000',   'ref=W' ])
+samples['WpToLNu_WpTo2J_aQGC_eboliv2_official']      .extend( ['xsec=0.6741',    'kfact=1.000',   'ref=W' ])
+samples['WpTo2J_WmToLNu_aQGC_eboliv2_official']      .extend( ['xsec=4.412',    'kfact=1.000',   'ref=W' ])
+samples['WmToLNu_ZTo2J_aQGC_eboliv2_official']       .extend( ['xsec=0.2121',    'kfact=1.000',   'ref=W' ])
+
+
 
 # monoH dileptonic for FullRun2 analysis
 # Insert xsec value in pb for each mass point in samples.py
