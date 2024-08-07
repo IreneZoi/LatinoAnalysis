@@ -65,9 +65,9 @@ class batchJobs :
        self.subDir   = jobDir+'/'+baseName+'__'+prodName
      if not os.path.exists(jobDir) : os.system('mkdir -p '+jobDir)
      self.nThreads = 1
-
-     #print stepList 
-     #print batchSplit
+     print ("self.subDir ",self.subDir)
+     print ("stepList ",stepList )
+     print ("stepList ", batchSplit)
 
      # Init Steps
      for iStep in stepList:
@@ -342,6 +342,8 @@ class batchJobs :
            jdsFile = open(jdsFileName,'w')
            jdsFile.write('executable = '+self.subDir+subDirExtra+'/'+jName+'.sh\n')
            jdsFile.write('universe = vanilla\n')
+           jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
+           jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
            #jdsFile.write('use_x509userproxy = true\n')
            jdsFile.write('output = '+self.subDir+subDirExtra+'/'+jName+'.out\n')
            jdsFile.write('error = '+self.subDir+subDirExtra+'/'+jName+'.err\n')
@@ -353,6 +355,7 @@ class batchJobs :
              jdsFile.write('on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)\n')
              jdsFile.write('periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > (60*3))\n')
            jdsFile.write('request_cpus = '+str(REQUEST_CPUS)+'\n')
+           jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
            jdsFile.write('+JobFlavour = "'+queue+'"\n')
            jdsFile.write('queue\n')
            jdsFile.close()
@@ -445,6 +448,8 @@ class batchJobs :
        jds += 'output = $(JName).out\n'
        jds += 'error = $(JName).err\n'
        jds += 'log = $(JName).log\n'
+       jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
+       jds += 'MY.WantOS = "el7"\n'
        #jds += 'use_x509userproxy = true\n'
        jds += 'request_cpus = '+str(REQUEST_CPUS)+'\n'
        if CONDOR_ACCOUNTING_GROUP:
@@ -690,6 +695,8 @@ def batchResub(Dir='ALL',queue='longlunch',requestCpus=1,IiheWallTime='168:00:00
           jdsFile = open(subDir+'/'+jName+'.jds','w')
           jdsFile.write('executable = '+subDir+'/'+jName+'.sh\n')
           jdsFile.write('universe = vanilla\n')
+          jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
+          jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
           jdsFile.write('output = '+subDir+'/'+jName+'.out\n')
           jdsFile.write('error = '+subDir+'/'+jName+'.err\n')
           jdsFile.write('log = '+subDir+'/'+jName+'.log\n')
@@ -771,6 +778,8 @@ def batchResub(Dir='ALL',queue='longlunch',requestCpus=1,IiheWallTime='168:00:00
         jds += 'output = '+subDir+'/$(JName).out\n'
         jds += 'error = '+subDir+'/$(JName).err\n'
         jds += 'log = '+subDir+'/$(JName).log\n'
+        jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n' 
+        jds += 'MY.WantOS = "el7"\n'
         jds += 'request_cpus = '+str(REQUEST_CPUS)+'\n'
         jds += '+JobFlavour = "'+queue+'"\n'
         if CONDOR_ACCOUNTING_GROUP:

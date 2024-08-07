@@ -1236,7 +1236,7 @@ class ShapeFactory:
       if 'eosuser.cern.ch' in path:
         if os.system(eoususer+' ls '+path.split('/eosuser.cern.ch/')[1]+' >/dev/null 2>&1') == 0 : return True
       if 'eoscms.cern.ch' in path:
-        if os.system('eos ls '+path.split('/eoscms.cern.ch/')[1]+' >/dev/null 2>&1') == 0 : return True
+        if os.system('ls '+path.split('/eoscms.cern.ch/')[1]+' >/dev/null 2>&1') == 0 : return True
       return False
 
     # _____________________________________________________________________________
@@ -1473,8 +1473,10 @@ class ShapeFactory:
                 slabels = ['']
     
               for slabel in slabels:
+                print " slabel ",slabel," sampleName ",sampleName
                 histoName = 'histo_' + outputFormat.format(sample=sampleName, subsample=slabel, nuisance='')
                 nominal = outDir.Get(histoName)
+                print " nominal ",nominal
                 vnominal = rnp.hist2array(nominal, copy=False)
 
                 variations = np.empty((len(configurationNuis), vnominal.size), dtype=vnominal.dtype)

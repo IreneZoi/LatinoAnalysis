@@ -650,7 +650,7 @@ Samples['WpTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fn
 Samples['WmTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 
-# central mini and private nano VBS aQGC semilep with dipole recoil and new operators
+# central mini and private nano VBS aQGC semilep with dipole recoil and new operators, produced by Irene at LPC
 Samples['WpToLNu_WmTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 Samples['WpTo2J_WmToLNu_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
@@ -668,7 +668,27 @@ Samples['ZTo2L_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gr
 Samples['WpTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 Samples['WmTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
-               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2018/2018_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
+
+# central mini and private nano VBS aQGC semilep with dipole recoil and new operators, produced by Matteo at KIT
+Samples['WpToLNu_WmTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WpTo2J_WmToLNu_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WpToLNu_WpTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WmToLNu_WmTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WmToLNu_ZTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WpToLNu_ZTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['ZTo2L_ZTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WpTo2J_ZTo2L_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
+Samples['WmTo2J_ZTo2L_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
 
 
 #

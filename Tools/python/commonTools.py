@@ -109,18 +109,19 @@ class xsectionDB:
       handle = open(xsFile)
       for iLine in handle.read().split('\n') :
         if 'samples' in iLine.split('#')[0] :
-          #print iLine
+          if "eboli" in iLine: print iLine
           iKey=iLine.split('\'')[1].replace(' ','')
-          #print iKey
+          if "eboli" in iLine:print iKey
           #if iKey in self.xsections : print 'Replacing ....',iKey,self.xsections[iKey]
           #else : print 'Adding ....',iKey         
           self.xsections[iKey] = {}
           vec=iLine.split('[')[2].split(']')[0]
-          #print vec
+          if "eboli" in iLine:print vec
           for iVec in vec.split(',') : 
             info=iVec.split('\'')[1]
             iName=info.split('=')[0]
-            iVal =info.split('=')[1] 
+            iVal =info.split('=')[1]
+            if "eboli" in iLine: print " iName ",iName," iVal ",iVal 
             if iName == 'xsec'  : self.xsections[iKey]['xs']     = iVal
             if iName == 'kfact' : self.xsections[iKey]['kfact']  = iVal
             if iName == 'ref'   : self.xsections[iKey]['src']    = 'Python,ref='+iVal
@@ -134,11 +135,13 @@ class xsectionDB:
       self._HiggsXS   = HiggsXSection() 
 
     def get(self,iSample):
-      if self._useYR :
-        Higgs = self._HiggsXS.GetHiggsXS4Sample(self._YRVersion,self._YREnergy,iSample)
-        print Higgs
-        if not Higgs['xs'] == 0. : return str(Higgs['xs'])
-
+      # if self._useYR == True :
+      #   print " why is using YR?"
+      #   Higgs = self._HiggsXS.GetHiggsXS4Sample(self._YRVersion,self._YREnergy,iSample)
+      #   print Higgs
+      #   if not Higgs['xs'] == 0. : return str(Higgs['xs'])
+      #print self.xsections
+      print " self.xsections ",self.xsections[iSample]
       if iSample in self.xsections : 
         print iSample, self.xsections[iSample]['xs'] , self.xsections[iSample]['kfact']
         return str(float(self.xsections[iSample]['xs'])*float(self.xsections[iSample]['kfact']))
@@ -157,7 +160,7 @@ class xsectionDB:
 def getSampleFiles(inputDir,Sample,absPath=False,rooFilePrefix='latino_',FromPostProc=False):
 
     
-
+    print " getSampleFiles in commonTools"
     #### SETUP DISK ACCESS ####
     #if someoune had defined xrootdPath, live with it
     if 'root://' in inputDir:
@@ -268,7 +271,8 @@ def getSampleFiles(inputDir,Sample,absPath=False,rooFilePrefix='latino_',FromPos
             FileTarget.append('###'+xrootdPath+iFile)
         else:
           FileTarget.append(iFile)
-      else       : FileTarget.append(os.path.basename(iFile)) 
+      else       : FileTarget.append(os.path.basename(iFile))
+    print " getSampleFiles in commonTools done " #,FileTarget 
     return FileTarget
 
 #### samples Weights

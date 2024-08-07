@@ -113,7 +113,7 @@ class LawnMower:
               cuts.append (obj.GetName()[:-7])   # length of "_prefit" = 7
               folders.append(obj)
               
-        print " cuts = ", cuts
+        print " cuts skjdfhajksdhgsjkdfhgjksdhgjk = ", cuts
         
         #
         # prepare output file
@@ -134,17 +134,23 @@ class LawnMower:
         histos = {}
         
         for folder in folders:
+          print " folder ",folder
           keys = folder.GetListOfKeys()
           for key in keys:
+            print " key ",key
             obj = key.ReadObj()
             if (obj.IsA().GetName() != "TProfile"
                  and 
                  obj.InheritsFrom("TH1")
                ) :
+              print " obj is not TProfile and inherits from Th1"
               if obj.GetName() != "data_obs" and obj.GetName() != "TotalBkg" and obj.GetName() != "TotalProcs" and obj.GetName() != "TotalSig":
+                print " obj.GetName() ",obj.GetName()
                 if (obj.GetName() in histos.keys()) :
+                  print " add"
                   histos[obj.GetName()].Add(obj)
                 else :
+                  print " first"
                   histos[obj.GetName()] = obj
            
         print " histos selected = ", histos

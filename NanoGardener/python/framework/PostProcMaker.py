@@ -80,14 +80,18 @@ class PostProcMaker():
     # Among 'gDoc','Python','YellowR' and order Matter (Overwriting for same samples !)
     xsMethods=['Python','YellowR']
     xsFile=self._cmsswBasedir+'/src/'+self._Productions[iProd]['xsFile']
+    print "xsFile ",xsFile
+    
     self._xsDB = xsectionDB()
     for iMethod in xsMethods :
 
       #OLD if iMethod == 'gDoc'    : self._xsDB.readGDoc(Productions[iProd]['gDocID'])
-      if iMethod == 'Python'  : self._xsDB.readPython(xsFile)
+      if iMethod == 'Python'  : 
+        print " read python "
+        self._xsDB.readPython(xsFile)
       #if iMethod == 'YellowR' : self._xsDB.readYR('YR4','13TeV')
       if iMethod == 'YellowR' : self._xsDB.readYR(self._Productions[iProd]['YRver'][0],self._Productions[iProd]['YRver'][1])
-
+      print " self._xsDB.readYR ", self._xsDB.readYR
    def Reset(self) :
 
      # Samples
@@ -158,25 +162,38 @@ class PostProcMaker():
 # -------------- File Handling
 
    def selectSample(self,iProd,iStep,iSample):
+      print " selectSample self._Productions ",self._Productions[iProd]
       # From Production
       if     'onlySample' in  self._Productions[iProd]              \
          and len(self._Productions[iProd]['onlySample']) > 0        \
-         and not iSample in self._Productions[iProd]['onlySample']  : return False
+         and not iSample in self._Productions[iProd]['onlySample']  : 
+           print " onlySample Production"
+           return False
       if     'excludeSample' in self._Productions[iProd]            \
          and len(self._Productions[iProd]['excludeSample']) > 0     \
-         and iSample in self._Productions[iProd]['excludeSample']   : return False
+         and iSample in self._Productions[iProd]['excludeSample']   : 
+           print 'excludeSample Production'
+           return False
       # From Step
+      print " self._Steps[iStep] ",self._Steps[iStep]
       if     'onlySample' in  self._Steps[iStep]              \
          and len(self._Steps[iStep]['onlySample']) > 0        \
-         and not iSample in self._Steps[iStep]['onlySample']  : return False
+         and not iSample in self._Steps[iStep]['onlySample']  : 
+           print " onlySample Step"
+           return False
       if     'excludeSample' in self._Steps[iStep]            \
          and len(self._Steps[iStep]['excludeSample']) > 0     \
-         and iSample in self._Steps[iStep]['excludeSample']   : return False
+         and iSample in self._Steps[iStep]['excludeSample']   : 
+           print " excludeSample Step"
+           return False
       # ---
+      print " True"
       return True
 
    def getTargetFileDic(self,iProd,iStep,iSample,FileList):
+     print " getTargetFileDic "
      FileDic = {}
+     print " len(FileList) ",len(FileList)
      if len(FileList) == 0 : return FileDic
 
      # fileCmd .... Directory
@@ -188,11 +205,13 @@ class PostProcMaker():
      else:
        if not '__part' in FileList[0] : fileCmd += self._treeFilePrefix+iSample+'.root'
        else                           : fileCmd += self._treeFilePrefix+iSample+'__part*.root'
-
+     print " fileCmd ",fileCmd
      # fileCmd .... Exec
      proc=subprocess.Popen(fileCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
      out, err = proc.communicate()
      FileExistList=string.split(out)
+     print " FileExistList ",FileExistList
+     
      # Now Check
      toSkip=[]
      if not self._redo :
@@ -217,32 +236,43 @@ class PostProcMaker():
            fileTargetName = self._targetDir+self._treeFilePrefix+iSample+PartName+'.root'
            FileDic[self._aaaXrootd+iFile] = fileTargetName
          iPart +=1
-
+     print " FileDic ",FileDic
      return FileDic
 
    def getTargetFiles(self,iProd,iStep):
-
+     print " getTargetFiles "
      self._targetDic = {}
-
+     print " self._Samples ",self._Samples
      for iSample in self._Samples :
+       print ("iSample  ", iSample )
        if self.selectSample(iProd,iStep,iSample) :
+         print "iProd ",iProd," iStep ",iStep," iSample ",iSample
+         #print " self.getFiles(iSample) ",self.getFiles(iSample)
          FileDic = self.getTargetFileDic(iProd, iStep, iSample, self.getFiles(iSample))
+         print " FileDic ",len(FileDic)
          if len(FileDic) > 0:
            self._targetDic[iSample] = FileDic
-
+           print " added filedic for iSample ",iSample
+     print " done getTargetFiles "
    def getFiles(self, sample):
+     print " self._iniStep ",self._iniStep
      if self._iniStep == 'Prod':
        # From central (or private) nanoAOD : DAS instance to be declared for ptrivate nAOD
        return self.getFilesFromSource(sample)
      else:
        # From previous PostProc step
+       print " self._sourceDir ",self._sourceDir
+       print " sample ",sample
        return self.getSampleFiles(self._sourceDir, sample)
 
    def getSampleFiles(self, directory, sample):
+       print "self._treeFilePrefix ",self._treeFilePrefix
        return getSampleFiles(directory, sample, True, self._treeFilePrefix, True)
 
    def getFilesFromSource(self, sample):
        if 'srmPrefix' in self._Samples[sample]:
+         print " self._Samples[sample]['paths'] ",self._Samples[sample]['paths']
+         print " self._Samples[sample]['srmPrefix'] ",self._Samples[sample]['srmPrefix']
          return self.getFilesFromPath(self._Samples[sample]['paths'], self._Samples[sample]['srmPrefix'])
        else:
          try:
@@ -253,6 +283,7 @@ class PostProcMaker():
          return self.getFilesFromDAS(self._Samples[sample]['nanoAOD'], dasInst)
 
    def getFilesFromDAS(self,dataset,dasInstance='prod/global'):
+     print " why getFilesFromDAS ?"
      dasCmd='dasgoclient -query="instance='+dasInstance+' file dataset='+dataset+'"'
      proc=subprocess.Popen(dasCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
      out, err = proc.communicate()
@@ -264,6 +295,7 @@ class PostProcMaker():
      return FileList
 
    def getFilesFromPath(self,paths,srmprefix):
+     print "getFilesFromPath "
      if 'el7' in os.uname()[2]:
        try:
          # gfal-ls from command line (i.e. subprocess) doesn't work in CC7
@@ -290,7 +322,9 @@ class PostProcMaker():
      
      FileList = []
      for path in paths:
+       print " path ",path
        if useGfal2Py:
+         print " useGfal2Py "
          dircont = self.ctx.listdir(srmprefix + path)
          files = [f for f in dircont if f.endswith('.root')]
        else:
@@ -304,6 +338,7 @@ class PostProcMaker():
          files=string.split(out)
 
        for file in files:
+         print " file ",file
          FileList.append(path+"/"+file)
 
      return FileList
@@ -314,31 +349,36 @@ class PostProcMaker():
      self._sourceDir = None
      if not self._iniStep == 'Prod' :
        self._sourceDir = self._Sites[self._LocalSite]['treeBaseDir']+'/'+iProd+'/'+self._iniStep+'/'
-
-
+     print " self._sourceDir ",self._sourceDir
+     print " iStep ",iStep
      if not iStep == 'UEPS' :
        if 'treeBaseDirOut' in self._Sites[self._LocalSite]:
          self._targetDir = self._Sites[self._LocalSite]['treeBaseDirOut']+'/'+iProd+'/'
+         print " treeBaseDirOut self._targetDir ",self._targetDir
        else:
          self._targetDir = self._Sites[self._LocalSite]['treeBaseDir']+'/'+iProd+'/'
+         print " self._targetDir ",self._targetDir
        if not self._iniStep == 'Prod' : self._targetDir += self._iniStep+'__'+iStep+'/'
        else                           : self._targetDir += iStep+'/'
-
-       if self._Sites[self._LocalSite]['mkDir'] : os.system('mkdir -p '+ self._targetDir )
+       print " self._targetDir ",self._targetDir
+       if self._Sites[self._LocalSite]['mkDir'] :
+         print " making target dir"
+         os.system('mkdir -p '+ self._targetDir )
 
      # UEPS
      else:
        for iUEPS in self._Steps[iStep]['cpMap'] :
          if self._Sites[self._LocalSite]['mkDir'] :
            os.system('mkdir -p '+ self._Sites[self._LocalSite]['treeBaseDir']+'/'+iProd+'/'+self._iniStep+'__'+iUEPS)
-
+     print " done "
 # --------------- Job Jandling
 
    def submitJobs(self,iProd,iStep):
-
+     print " submitJobs"
+     print " iProd ",iProd," iStep ",iStep
      bpostFix=''
      if not self._iniStep == 'Prod' : bpostFix='____'+self._iniStep
-
+     print " JOB_DIR_SPLIT ",JOB_DIR_SPLIT
      # Make job directories
      if JOB_DIR_SPLIT :
        jDir = jobDir+'/NanoGardening__'+iProd+'__'+iStep
@@ -346,11 +386,14 @@ class PostProcMaker():
          if not os.path.exists(jDir+'/'+iSample) : os.system('mkdir -p '+jDir+'/'+iSample)
      else:
        jDir = jobDir+'/NanoGardening__'+iProd
+     print " jDir ",jDir
      if not os.path.exists(jDir) : os.system('mkdir -p '+jDir)
      wDir = workDir+'/NanoGardening__'+iProd
+     print " wDir ",wDir
      if not os.path.exists(wDir) : os.system('mkdir -p '+wDir)
-
+     
      # prepare targetList
+     print "prepare targetList self._targetDic ",self._targetDic
      targetList = []
      for iSample in self._targetDic :
        for iFile in self._targetDic[iSample] :
@@ -373,7 +416,7 @@ class PostProcMaker():
 
      # Check pre bash command for Steps
      preBash = self.checkPreBashStep(iStep)
-
+     print " self._targetDic ",self._targetDic
      if self._jobMode == 'Interactive' :
        print "INFO: Using Interactive command"
      # batchMode Preparation
@@ -381,6 +424,7 @@ class PostProcMaker():
        print "INFO: Using Local Batch"
        if 'slc7' in os.environ['SCRAM_ARCH'] and self._Sites[self._LocalSite]['slc_ver'] == 6 : use_singularity = True
        else : use_singularity = False
+       print " iProd ",iProd," iStep ",iStep," ",[iStep]
        self._jobs = batchJobs('NanoGardening',iProd,[iStep],targetList,'Targets,Steps',bpostFix,JOB_DIR_SPLIT_READY=True,USE_SINGULARITY=use_singularity)
        self._jobs.Add2All('cp '+self._cmsswBasedir+'/src/'+self._haddnano+' .')
        self._jobs.Add2All(preBash)
@@ -393,7 +437,7 @@ class PostProcMaker():
        self._crab.setStorage('T2_CH_CERN','/store/group/phys_higgs/cmshww/amassiro/HWWNanoCrab/')
        self._crab.AddInputFile(self._cmsswBasedir+'/src/'+self._haddnano)
        #self._crab._ScriptHeader = self._cmsswBasedir+'/src/LatinoAnalysis/NanoGardener/test/PostProc_CrabScript_Header.sh'
-
+     print " self._targetDic ",self._targetDic
      for iSample in self._targetDic :
        for iFile in self._targetDic[iSample] :
          iTarget = os.path.basename(self._targetDic[iSample][iFile]).replace(self._treeFilePrefix,'').replace('.root','')
@@ -403,9 +447,12 @@ class PostProcMaker():
              pyFile=jDir+'/'+iSample+'/NanoGardening__'+iProd+'__'+iStep+'__'+iTarget+bpostFix+'.py'
            else:
              pyFile=jDir+'/NanoGardening__'+iProd+'__'+iStep+'__'+iTarget+bpostFix+'.py'
+           print " pyFile ",pyFile
            if os.path.isfile(pyFile) : os.system('rm '+pyFile)
            outFile=self._treeFilePrefix+iTarget+'__'+iStep+'.root'
+           print " outFile ",outFile
            jsonFilter = self._Productions[iProd]['jsonFile'] if 'jsonFile' in self._Productions[iProd].keys() else None
+           print " jsonFilter ",jsonFilter
            self.mkPyCfg(iProd,iSample,[self.getStageIn(iFile)],iStep,pyFile,outFile,self._Productions[iProd]['isData'], jsonFilter)
            # Stage Out command + cleaning
            stageOutCmd  = self.mkStageOut(outFile,self._targetDic[iSample][iFile])
@@ -654,8 +701,11 @@ class PostProcMaker():
      elif '-ext' in iSample : iSampleXS = iSample.split('-ext')[0]
      elif '_newpmx' in iSample : iSampleXS = iSample.split('_newpmx')[0]
      else:                    iSampleXS = iSample
+     print " iSample ",iSample," iSampleXS ",iSampleXS
+     print " self._baseW ",self._baseW
      if not iSample in self._baseW:
        Xsec  = self._xsDB.get(iSampleXS)
+       print " Xsec ",Xsec
        if float(Xsec) == 0.: 
            nEvt = 0
            baseW = 1
@@ -705,6 +755,7 @@ class PostProcMaker():
            baseW = float(Xsec)*1000./nEvt
        print 'baseW: xs,N -> W', Xsec , nEvt , baseW
        # Store Info
+       print " baseW ",baseW," Xsec ",Xsec
        self._baseW[iSample] = { 'baseW' : baseW , 'Xsec' : Xsec }
 
    def customizeModule(self,iSample,iStep):
@@ -1065,10 +1116,14 @@ class PostProcMaker():
          if    ( not self._Productions[iProd]['isData'] and self._Steps[iStep]['do4MC'] ) \
             or (     self._Productions[iProd]['isData'] and self._Steps[iStep]['do4Data'] ) :
            print '---------------- for Step : ',iStep
+           print " now steeeeeppppp "
            self.mkFileDir(iProd,iStep)
+           print " got dir!!!"
            if   not iStep == 'hadd' and not iStep == 'UEPS' :
              self.getTargetFiles(iProd,iStep)
+             print " got files!!"
              self.submitJobs(iProd,iStep)
+             print " submitted!!"
            elif iStep == 'hadd' :
              self.getHaddFiles(iProd,iStep)
              self.mkHadd(iProd,iStep)
@@ -1089,8 +1144,12 @@ class PostProcMaker():
          print '----> This is DATA, skipping !!!!'
          exit()
        print '---------------- for Step : ',self._iniStep
+       print " steeeeeeeepppppppp "
        self.mkFileDir(iProd,'baseW')
+       print " fkkfkffkkfkfk done mkFileDir, getting target files"
        self.getTargetFiles(iProd,'baseW')
+       print " self._targetDic before loop",self._targetDic
+       print " iSample ",iSample
        for iSample in self._targetDic:
          print '------------------- for Sample : ',iSample
          self.computewBaseW(iSample)
