@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-baseDir  = '/afs/cern.ch/work/i/izoi/VBSanalysis/logs/'
+baseDir  = '/uscms/home/izoi/nobackup/VBS_semilep_aQGC/LatinosPreProcessing/logs/'
 jobDir   = baseDir+'jobs/'
 workDir  = baseDir+'workspace/'
 jobDirSplit = True

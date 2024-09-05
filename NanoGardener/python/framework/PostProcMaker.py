@@ -44,6 +44,8 @@ class PostProcMaker():
      # site
      self._LocalSite    = None
      self._TargetSite   = None
+     
+     self._cmssw_tarball = None # fnal needs it!
 
      # Cfg
      self._Sites        = {}
@@ -425,7 +427,7 @@ class PostProcMaker():
        if 'slc7' in os.environ['SCRAM_ARCH'] and self._Sites[self._LocalSite]['slc_ver'] == 6 : use_singularity = True
        else : use_singularity = False
        print " iProd ",iProd," iStep ",iStep," ",[iStep]
-       self._jobs = batchJobs('NanoGardening',iProd,[iStep],targetList,'Targets,Steps',bpostFix,JOB_DIR_SPLIT_READY=True,USE_SINGULARITY=use_singularity)
+       self._jobs = batchJobs('NanoGardening',iProd,[iStep],targetList,'Targets,Steps',bpostFix,JOB_DIR_SPLIT_READY=True,USE_SINGULARITY=use_singularity,cmssw_tarball=self._cmssw_tarball)
        self._jobs.Add2All('cp '+self._cmsswBasedir+'/src/'+self._haddnano+' .')
        self._jobs.Add2All(preBash)
        self._jobs.AddPy2Sh()
@@ -451,6 +453,7 @@ class PostProcMaker():
            if os.path.isfile(pyFile) : os.system('rm '+pyFile)
            outFile=self._treeFilePrefix+iTarget+'__'+iStep+'.root'
            print " outFile ",outFile
+           print "wDir ",wDir
            jsonFilter = self._Productions[iProd]['jsonFile'] if 'jsonFile' in self._Productions[iProd].keys() else None
            print " jsonFilter ",jsonFilter
            self.mkPyCfg(iProd,iSample,[self.getStageIn(iFile)],iStep,pyFile,outFile,self._Productions[iProd]['isData'], jsonFilter)
@@ -532,9 +535,15 @@ class PostProcMaker():
          else :
             print 'ERROR: mkStageOut to different site not yet implemented for _LocalSite = ',self._LocalSite
             exit()
+      # FNAL
+      elif self._LocalSite == 'fnal' :
+        if not cpMode:
+          command = 'xrdcp -f '+prodFile+' '+self._Sites[self._LocalSite]['xrootdPath']+'/'+storeFile
+        else:
+          command = 'xrdcp -f '+self._Sites[self._LocalSite]['xrootdPath']+prodFile+' '+self._Sites[self._LocalSite]['xrootdPath']+'/'+storeFile
       #KISTI T3
-      elif self._LocalSite == 'sdfarm' :
-	storeFile = storeFile.replace('xrootd', 'xrd')
+      elif self._LocalSite == 'sdfarm' : 
+        storeFile = storeFile.replace('xrootd', 'xrd')
         if not cpMode:
           command = 'xrdcp -f '+prodFile+' '+self._Sites[self._LocalSite]['xrootdPath']+storeFile
         else:

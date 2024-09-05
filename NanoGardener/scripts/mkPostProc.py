@@ -50,6 +50,7 @@ if __name__ == '__main__':
     parser.add_option("-b","--batch",   dest="runBatch", help="Run in batch"                              , default=False  , action="store_true")
     parser.add_option("-c","--crab",   dest="runCrab", help="Run in batch"                              , default=False  , action="store_true")
     parser.add_option("-Q" , "--queue" ,  dest="queue"    , help="Batch Queue"  , default=None , type='string' )
+    parser.add_option('--cmssw_tarball'  , dest='cmssw_tarball'  , help='tarball to submit to condor containing custom CMSSW', default=None)
     # TODO: parser.add_option("-g","--grid",    dest="runGrid", help="Run in Grid"                              , default=False  , action="store_true")
 
 # ---------------------------------------- Config
@@ -129,9 +130,11 @@ if __name__ == '__main__':
     factory.configSite()
 
     # Setup Steps and Productions 
-    factory._Steps       = Steps
-    factory._Productions = Productions
+    factory._Steps         = Steps
+    factory._Productions   = Productions
 
+    factory._cmssw_tarball = options.cmssw_tarball #fnal needs it
+    
     # What to do
     factory._stepList    = stepList
     factory._prodList    = prodList

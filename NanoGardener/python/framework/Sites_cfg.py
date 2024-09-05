@@ -22,6 +22,16 @@ Sites = {
               'batchQueues' : ['8nh','1nd','2nd','1nw'],
               'slc_ver'     : 7
            } ,
+  'fnal' : {
+              'lsCmd'       : 'ls' ,
+              'mkDir'       : True ,
+              'xrootdPath'  : 'root://cmseos.fnal.gov' ,
+              # 'treeBaseDir' : '/eos/uscms/store/group/lnujj/aQGC_VVJJ_Private_Production_PreProcessing/test/' ,
+              'treeBaseDir' : '/store/group/lnujj/aQGC_VVJJ_Private_Production_PreProcessing/test/' ,
+            #   'treeBaseDir' : '/eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/', 
+              'batchQueues' : ['8nh','1nd','2nd','1nw'],
+              'slc_ver'     : 7
+           } ,
 
   'sdfarm' : {
               'lsCmd'       : 'ls' ,

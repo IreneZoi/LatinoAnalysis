@@ -43,7 +43,7 @@ except NameError:
   REQUEST_CPUS = 1
 
 class batchJobs :
-   def __init__ (self,baseName,prodName,stepList,targetList,batchSplit,postFix='',usePython=False,useBatchDir=True,wDir='',JOB_DIR_SPLIT_READY=False,USE_SINGULARITY=False):
+   def __init__ (self,baseName,prodName,stepList,targetList,batchSplit,postFix='',usePython=False,useBatchDir=True,wDir='',JOB_DIR_SPLIT_READY=False,USE_SINGULARITY=False,cmssw_tarball=''):
      # baseName   = Gardening, Plotting, ....
      # prodName   = 21Oct_25ns , ...
      # stepList   = list of steps (like l2sel or a set of plots to produce)
@@ -68,6 +68,7 @@ class batchJobs :
      print ("self.subDir ",self.subDir)
      print ("stepList ",stepList )
      print ("stepList ", batchSplit)
+     print ("CMSSW ", cmssw_tarball)
 
      # Init Steps
      for iStep in stepList:
@@ -138,6 +139,8 @@ class batchJobs :
          jFile.write('#$ -N '+jName+'\n')
          jFile.write('export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n')
          jFile.write('export X509_USER_PROXY=/gwpool/users/'+os.environ["USER"]+'/.proxy\n')
+       elif 'fnal' in hostName:
+         jFile.write('export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n')
        else:
          jFile.write('export X509_USER_PROXY=/user/'+os.environ["USER"]+'/.proxy\n')
          if self.USE_SINGULARITY : jFileSing.write('export X509_USER_PROXY=/user/'+os.environ["USER"]+'/.proxy\n')
@@ -147,11 +150,29 @@ class batchJobs :
        if self.USE_SINGULARITY : jFileSing.write('voms-proxy-info\n')
        jFile.write('export SCRAM_ARCH='+SCRAMARCH+'\n')
        jFile.write('export VO_CMS_SW_DIR=/cvmfs/cms.cern.ch\n')
+       if 'fnal' in hostName:
+          #jFile.write('xrdcp '+cmssw_tarball+' .\n')
+          # tarball_name = cmssw_tarball #.split('/')[-1].split('.')[0]
+          #jFile.write('ls *.tgz\n')
+          #jFile.write('tar -xf '+tarball_name+'\n')
+          #jFile.write('rm '+tarball_name+'\n')
+          jFile.write('echo this is the CMSSW release {}\n'.format(cmssw_tarball))
+          jFile.write('source /cvmfs/cms.cern.ch/cmsset_default.sh\n')
+          jFile.write('scramv1 project CMSSW {}\n'.format(cmssw_tarball)) # cmsrel is an alias not on the workers
+          jFile.write('ls -alrth')
+          jFile.write('cd '+cmssw_tarball+'/src/\n')
+          # jFile.write('scramv1 b ProjectRename') # this handles linking the already compiled code - do NOT recompile\n')
+          jFile.write('eval `scramv1 runtime -sh`\n') # cmsenv is an alias not on the workers
+          jFile.write('echo $CMSSW_BASE ') #"is the CMSSW we created on the local worker node"
+          # jFile.write('eval `scramv1 runtime -sh` # cmsenv is an alias not on the workers\n')
+       else:
+          jFile.write('cd '+CMSSW+'\n')
+          jFile.write('eval `scramv1 ru -sh`\n')
        jFile.write('source $VO_CMS_SW_DIR/cmsset_default.sh\n') 
        jFile.write('cd '+CMSSW+'\n')
        jFile.write('eval `scramv1 ru -sh`\n')
                
-       if 'knu' in hostName or 'hercules' in hostName:
+       if 'knu' in hostName or 'hercules' in hostName or 'fnal' in hostName:
          pass
        else:
          jFile.write('ulimit -c 0\n')
@@ -184,6 +205,9 @@ class batchJobs :
            jFile.write("mkdir "+ tmpdataDir +  "\n")
            jFile.write("cd "+ tmpdataDir + "\n")
            jFile.write("pwd \n")
+         elif 'fnal' in hostName:
+            jFile.write('cd ${_CONDOR_SCRATCH_DIR}\n')
+            jFile.write('echo $1.$2 > '+jName+'.jid\n')
          else:
            jFile.write('cd - \n')
            ### the following makes the .sh script exit if an error is thrown after the "set -e" command
@@ -272,7 +296,10 @@ class batchJobs :
        else:
          subDirExtra =''
        jFile = open(self.subDir+subDirExtra+'/'+jName+'.sh','a')
-       command = 'python '+self.subDir+subDirExtra+'/'+jName+'.py'
+       if 'fnal' in os.uname()[1]:
+          command = 'python '+jName+'.py'
+       else:
+          command = 'python '+self.subDir+subDirExtra+'/'+jName+'.py'
        jFile.write(command+'\n')
        jFile.close()
 
@@ -312,8 +339,9 @@ class batchJobs :
        MaxRunTime = (runtimes[flavours.index(queue)] - 1) * 60
 
        scheduler = 'condor'
-     
 
+     if 'fnal' in hostName:
+        queue = 'LPC'
 
      for jName in self.jobsList:
        if JOB_DIR_SPLIT and self.JOB_DIR_SPLIT_READY :
@@ -328,7 +356,10 @@ class batchJobs :
          jobFile=self.subDir+subDirExtra+'/'+jName+'.sh' 
        errFile=self.subDir+subDirExtra+'/'+jName+'.err'
        outFile=self.subDir+subDirExtra+'/'+jName+'.out'
-       jidFile=self.subDir+subDirExtra+'/'+jName+'.jid'
+       if 'fnal' in hostName:
+          jidFile = jName+'.jid'
+       else:
+          jidFile=self.subDir+subDirExtra+'/'+jName+'.jid'
        jFile = open(jobFile,'a')
        jFile.write('[ $? -eq 0 ] && mv '+jidFile+' '+jidFile.replace('.jid','.done') )
        jFile.close()
@@ -342,8 +373,10 @@ class batchJobs :
            jdsFile = open(jdsFileName,'w')
            jdsFile.write('executable = '+self.subDir+subDirExtra+'/'+jName+'.sh\n')
            jdsFile.write('universe = vanilla\n')
-           jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
-           jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
+           jdsFile.write('+ApptainerImage = "/cvmfs/singularity.opensciencegrid.org/cmssw/cms:rhel7"\n') # test for fnal setup https://uscms.org/uscms_at_work/computing/setup/batch_systems.shtml#apptainer
+          #  jdsFile.write('+DesiredOS = "SL7"\n') # another test for fnal setup https://uscms.org/uscms_at_work/computing/setup/batch_systems.shtml#apptainer
+          #  jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
+          #  jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
            #jdsFile.write('use_x509userproxy = true\n')
            jdsFile.write('output = '+self.subDir+subDirExtra+'/'+jName+'.out\n')
            jdsFile.write('error = '+self.subDir+subDirExtra+'/'+jName+'.err\n')
@@ -430,6 +463,20 @@ class batchJobs :
        elif "pi.infn.it" in socket.getfqdn():
          queue="cms"
          jobid=os.system('bsub -q '+queue+' -o '+outFile+' -e '+errFile+' '+jobFile+' > '+jidFile)
+       elif 'fnal' in hostName:
+         jdsFileName=self.subDir+subDirExtra+'/'+jName+'.jds'
+         jdsFile = open(jdsFileName,'w')
+         jdsFile.write('executable = '+jName+'.sh\n')
+         jdsFile.write('universe = vanilla\n')
+         jdsFile.write('output = '+subDirExtra+'/'+jName+'.out\n')
+         jdsFile.write('error = '+subDirExtra+'/'+jName+'.err\n')
+         jdsFile.write('log = '+subDirExtra+'/'+jName+'.log\n')
+         jdsFile.write('transfer_input_files = '+jName+'.py\n')
+         jdsFile.write('should_transfer_files = YES\n')
+         jdsFile.write('when_to_transfer_output = ON_EXIT_OR_EVICT\n')
+         jdsFile.write('Arguments = $(Cluster) $(Process)\n')
+         jdsFile.write('queue\n')
+         jdsFile.close()
        else:
          #print 'cd '+self.subDir+'/'+jName.split('/')[0]+'; bsub -q '+queue+' -o '+outFile+' -e '+errFile+' '+jName.split('/')[1]+'.sh | grep submitted' 
          jobid=os.system('bsub -q '+queue+' -o '+outFile+' -e '+errFile+' '+jobFile+' > '+jidFile)
@@ -495,6 +542,32 @@ class batchJobs :
            for qdict in qlist:
              with open(qdict['Cmd'].replace('.sh', '.jid'), 'w') as out:
                out.write('%s.%d\n' % (clusterId, qdict['ProcId']))
+
+     if 'fnal' in hostName:
+       mastersub = 'main.jds'
+       jdsMain = open(mastersub,'w')
+       jdsMain.write('executable = $(JName).sh\n')
+       jdsMain.write('universe = vanilla\n')
+       jdsMain.write('output = $Fnx(JName).out\n')
+       jdsMain.write('error = $Fnx(JName).err\n')
+       jdsMain.write('log = $Fnx(JName).log\n')
+       jdsMain.write('transfer_input_files = $Fnx(JName).py\n')
+       jdsMain.write('should_transfer_files = YES\n')
+       jdsMain.write('when_to_transfer_output = ON_EXIT_OR_EVICT\n')
+       jdsMain.write('initialdir = $Fp(JName)\n')
+       jdsMain.write('Arguments = $(Cluster) $(Process)\n')
+       jdsMain.write('queue JName in (\n')
+       for jName in self.jobsList:
+         if JOB_DIR_SPLIT and self.JOB_DIR_SPLIT_READY :
+           subDirExtra = '/' + jName.split('__')[3] 
+         else:
+           subDirExtra = '' 
+         jdsMain.write(self.subDir+subDirExtra+'/'+jName + '\n')
+       jdsMain.write(')\n')
+       jdsMain.close()
+
+       os.system('condor_submit '+mastersub)
+       os.system('rm main.jds')
 
    def AddCopy (self,iStep,iTarget,inputFile,outputFile):
      "Copy file from local to remote server (outputFile = /store/...)"
