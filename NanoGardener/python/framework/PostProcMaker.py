@@ -205,7 +205,7 @@ class PostProcMaker():
      else:
        if not '__part' in FileList[0] : fileCmd += self._treeFilePrefix+iSample+'.root'
        else                           : fileCmd += self._treeFilePrefix+iSample+'__part*.root'
-     print " fileCmd ",fileCmd
+     print "208 fileCmd ",fileCmd
      # fileCmd .... Exec
      proc=subprocess.Popen(fileCmd, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
      out, err = proc.communicate()
@@ -263,7 +263,9 @@ class PostProcMaker():
        # From previous PostProc step
        print " self._sourceDir ",self._sourceDir
        print " sample ",sample
-       return self.getSampleFiles(self._sourceDir, sample)
+       print " NB!!!! Modified for production at FNAL!!!!!!!!!"
+       return self.getFilesFromPath([self._sourceDir], self._Samples[sample]['srmPrefix'])  # For FNAL!!!!
+      #  return self.getSampleFiles(self._sourceDir, sample)
 
    def getSampleFiles(self, directory, sample):
        print "self._treeFilePrefix ",self._treeFilePrefix
@@ -321,6 +323,7 @@ class PostProcMaker():
        os.environ['X509_CERT_DIR'] = '/etc/grid-security/certificates'
      
      FileList = []
+     print " paths ",paths  
      for path in paths:
        print " path ",path
        if useGfal2Py:
@@ -340,6 +343,26 @@ class PostProcMaker():
        for file in files:
          print " file ",file
          FileList.append(path+"/"+file)
+    #  print " NO LOOP FOR FNAL!!!!!"
+    #  print paths    
+    # #  for path in paths:
+    # #    print " path ",path
+    #  if useGfal2Py:
+    #    print " useGfal2Py "
+    #    dircont = self.ctx.listdir(srmprefix + path)
+    #    files = [f for f in dircont if f.endswith('.root')]
+    #  else:
+    #    command = '(eval `scram unsetenv -sh`; gfal-ls '+srmprefix+paths+ " | grep root)"
+    #    proc=subprocess.Popen(command, stderr = subprocess.PIPE,stdout = subprocess.PIPE, shell = True)
+    #    out, err = proc.communicate()
+    #    if not proc.returncode == 0 :
+    #      print out
+    #      print err
+    #      exit()
+    #    files=string.split(out) 
+    #  for file in files:
+    #    print " file ",file
+    #    FileList.append(paths+"/"+file) 
 
      return FileList
 
@@ -707,13 +730,16 @@ class PostProcMaker():
        Xsec  = self._xsDB.get(iSampleXS)
        print " Xsec ",Xsec
        if float(Xsec) == 0.: 
+           print " float(Xsec) == 0."
            nEvt = 0
            baseW = 1
-       else:    
+       else:   
+           print " float(Xsec) NOT 0." 
            useLocal = False
-
+           print " iSample ",iSample
            FileList = self.getFiles(iSample)
-
+           FileList = [ file for file in FileList if iSample in file]
+           print (" FileList ", FileList) 
            # Always check #nAOD files !
            if self._iniStep == 'Prod':
              if 'srmPrefix' in self._Samples[iSample]:
@@ -730,19 +756,30 @@ class PostProcMaker():
                FileList = nAODFileList
                if 'srmPrefix' in self._Samples[iSample]:
                  useLocal = False
-
+           print ( "Now compute #evts ")
+           useLocal = False # FOR FNAL!!!!!
+           print (" set local false for FNAL!")
            # Now compute #evts
            genEventCount = 0
            genEventSumw  = 0.0
            genEventSumw2 = 0.0
            for iFile in FileList:
+             print " iFile ", iFile
              if DEBUG : print iFile
              if useLocal:
                f = ROOT.TFile.Open(iFile, "READ")
              else:
-               f = ROOT.TFile.Open(self._aaaXrootd+iFile, "READ")
+               print (" srm prefix+iFile ", self._Samples[iSample]['srmPrefix']+iFile)
+              #  f = ROOT.TFile.Open(self._aaaXrootd+iFile, "READ")
+               f = ROOT.TFile.Open(self._Samples[iSample]['srmPrefix']+iFile) #, "READ") # for fnal!!!
+            #  print (" srm prefix+iFile ", self._Samples[iSample]['srmPrefix']+iFile)
+              # f = ROOT.TFile.Open(self._aaaXrootd+iFile, "READ")
+            #  f = ROOT.TFile.Open(self._Samples[iSample]['srmPrefix']+iFile, "READ") # for fnal!!!
+  
+             print f.Get("Runs")
              Runs = f.Get("Runs")
              for iRun in Runs :
+               print " iRun ",iRun
                trailer = ""
                if hasattr(iRun, "genEventSumw_"): trailer = "_" 
                if DEBUG : print '---> genEventSumw = ', getattr(iRun , "genEventSumw"+trailer)

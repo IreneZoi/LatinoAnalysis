@@ -15,9 +15,14 @@ Sites = {
 
   'cern' : {
               'lsCmd'       : 'ls' ,
-              'mkDir'       : True ,
-              'xrootdPath'  : 'root://eoscms.cern.ch/' ,
-              'treeBaseDir' : '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/' ,
+              'mkDir'       : False ,
+              # 'xrootdPath'  : 'root://eoshome-m.cern.ch/', 
+              # 'treeBaseDir' : '/eos/user/m/mpresill/www/VBS/nAOD/',
+              # 'treeBaseDirOut': '/eos/user/m/mpresill/www/VBS/nAOD/',
+              'xrootdPath'  : 'root://cmseos.fnal.gov' ,
+              'treeBaseDir' : '//store/group/lnujj/aQGC_VVJJ_Private_Production_PreProcessing/' ,
+              # 'xrootdPath'  : 'root://eoscms.cern.ch/' ,
+              # 'treeBaseDir' : '/eos/cms/store/group/phys_higgs/cmshww/amassiro/HWWNano/' ,
             #   'treeBaseDir' : '/eos/cms/store/group/phys_smp/VJets_NLO_VBSanalyses/', 
               'batchQueues' : ['8nh','1nd','2nd','1nw'],
               'slc_ver'     : 7
