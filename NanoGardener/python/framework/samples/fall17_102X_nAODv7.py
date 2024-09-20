@@ -631,43 +631,43 @@ Samples['WmToLNu_ZTo2J_aQGC']  =  {'srmPrefix': 'gsiftp://eoscmsftp.cern.ch//eos
                "paths": ['/store/group/phys_smp/VJets_NLO_VBSanalyses/Samples/NanoAOD/aQGCs/2017/WminusTo2LZTo2JJJ_EWK_LO_aQGC_MJJ100PTJ10_TuneCP5_13TeV-madgraph-pythia8/']}
 
 # private production VBS aQGC semilep with dipole recoil and new operators
-Samples['WpToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpTo2J_WmToLNu_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_WmToLNu_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpToLNu_WpTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WpTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_WmTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['ZTo2L_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['ZTo2L_ZTo2J_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmTo2J_ZTo2L_aQGC_eboliv2'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 
 # central mini and private nano VBS aQGC semilep with dipole recoil and new operators, produced by Irene at LPC
-Samples['WpToLNu_WmTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WmTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpTo2J_WmToLNu_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_WmToLNu_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpToLNu_WpTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_WpTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmToLNu_WmTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_WmTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmToLNu_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmToLNu_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpToLNu_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpToLNu_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['ZTo2L_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['ZTo2L_ZTo2J_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WpTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WpTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
-Samples['WmTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'gsiftp://cmseos-gridftp.fnal.gov//eos/uscms/', 
+Samples['WmTo2J_ZTo2L_aQGC_eboliv2_official'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
                "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/NanoAODv7/']} 
 
 # central mini and private nano VBS aQGC semilep with dipole recoil and new operators, produced by Matteo at KIT
@@ -688,7 +688,27 @@ Samples['ZTo2L_ZTo2J_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache
 Samples['WpTo2J_ZTo2L_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
                "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
 Samples['WmTo2J_ZTo2L_aQGC_eboliv2_officialv2'] = {'srmPrefix': 'root://cmsdcache-kit-disk.gridka.de:1094/', 
-               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_Private_Production_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
+               "paths": ['/store/user/mpresill/privateProduction_aQGC_VBS_semileptonic_nanov7/aQGC_VVJJ_PrivateNanoProduction_2017/2017_aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/']} 
+
+# private nano VBS aQGC semilep with dipole recoil and new operators with Giacomo recipe, produced by Irene between lpc and lxplus
+Samples['WpToLNu_WmTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WPlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WpTo2J_WmToLNu_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WPhadWMlepJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WpToLNu_WpTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WPlepWPhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WmToLNu_WmTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WMlepWMhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WmToLNu_ZTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WMlepZhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WpToLNu_ZTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WPlepZhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['ZTo2L_ZTo2J_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_ZlepZhadJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WpTo2J_ZTo2L_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WPhadZlepJJ_EWK_LO_SM_mjj100_pTj10/nanohadded/']} 
+Samples['WmTo2J_ZTo2L_aQGC_Aug2024'] = {'srmPrefix': 'root://cmseos.fnal.gov/', 
+               "paths": ['/store/group/lnujj/aQGC_VVJJ_Private_Production_2017_GiacomoChain/aQGC_WMhadZlepJJ_EWK_LO_SM_mjj100_pTj10/nanohadded_lowstat/']} 
 
 
 #
