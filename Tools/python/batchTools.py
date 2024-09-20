@@ -342,8 +342,8 @@ class batchJobs :
            jdsFile = open(jdsFileName,'w')
            jdsFile.write('executable = '+self.subDir+subDirExtra+'/'+jName+'.sh\n')
            jdsFile.write('universe = vanilla\n')
-           jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
-           jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
+           #jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
+           #jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
            #jdsFile.write('use_x509userproxy = true\n')
            jdsFile.write('output = '+self.subDir+subDirExtra+'/'+jName+'.out\n')
            jdsFile.write('error = '+self.subDir+subDirExtra+'/'+jName+'.err\n')
@@ -355,7 +355,8 @@ class batchJobs :
              jdsFile.write('on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)\n')
              jdsFile.write('periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > (60*3))\n')
            jdsFile.write('request_cpus = '+str(REQUEST_CPUS)+'\n')
-           jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
+           jdsFile.write('MY.SingularityImage = "/cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/cms-cat/cmssw-lxplus/cmssw-el7-lxplus:latest/"\n')
+           #jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
            jdsFile.write('+JobFlavour = "'+queue+'"\n')
            jdsFile.write('queue\n')
            jdsFile.close()
@@ -460,8 +461,11 @@ class batchJobs :
        for jName in self.jobsList:
          if JOB_DIR_SPLIT and self.JOB_DIR_SPLIT_READY :
            subDirExtra = '/' + jName.split('__')[3] 
+           print "JOB_DIR_SPLIT  subDirExtra ",subDirExtra
          else:
-           subDirExtra = '' 
+           subDirExtra = ''
+           print "subDirExtra ",subDirExtra
+         print " self.subDir ",self.subDir 
          jds += self.subDir+subDirExtra+'/'+jName + '\n'
        jds += ')\n'
 
