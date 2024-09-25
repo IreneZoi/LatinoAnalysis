@@ -264,7 +264,10 @@ class PostProcMaker():
        print " self._sourceDir ",self._sourceDir
        print " sample ",sample
        print " NB!!!! Modified for production at FNAL!!!!!!!!!"
-       return self.getFilesFromPath([self._sourceDir], self._Samples[sample]['srmPrefix'])  # For FNAL!!!!
+       FileList = self.getFilesFromPath([self._sourceDir], self._Samples[sample]['srmPrefix'])
+       FileList = [ f for f in FileList if sample in f]
+       print " final list ",FileList
+       return FileList  # For FNAL!!!!
       #  return self.getSampleFiles(self._sourceDir, sample)
 
    def getSampleFiles(self, directory, sample):
@@ -340,9 +343,8 @@ class PostProcMaker():
            exit()
          files=string.split(out)
 
-       for file in files:
-         print " file ",file
-         FileList.append(path+"/"+file)
+       for file in files: 
+        FileList.append(path+"/"+file)
     #  print " NO LOOP FOR FNAL!!!!!"
     #  print paths    
     # #  for path in paths:
@@ -620,7 +622,12 @@ class PostProcMaker():
      fPy.write(' \n')
 
      # Files
-     fPy.write('sourceFiles=[\n%s\n]\n\n' % (',\n'.join('    "%s"' % f for f in inputRootFiles)))
+     
+    #  fPy.write('sourceFiles=[\n%s\n]\n\n' % (',\n'.join('    "%s"' % f for f in inputRootFiles)))
+     if('MCl1loose' not in iStep):  # for FNAL!!!
+       fPy.write('sourceFiles=[\n%s\n]\n\n' % (',\n'.join('    "root://cmseos.fnal.gov%s"' %f for f in inputRootFiles)))
+     else:
+       fPy.write('sourceFiles=[\n%s\n]\n\n' % (',\n'.join('    "%s"' % f for f in inputRootFiles)))
      fPy.write('files=[]\n\n')
 
      # Download the file locally with size validation (make maximum 5 attempts)
@@ -771,15 +778,17 @@ class PostProcMaker():
              else:
                print (" srm prefix+iFile ", self._Samples[iSample]['srmPrefix']+iFile)
               #  f = ROOT.TFile.Open(self._aaaXrootd+iFile, "READ")
-               f = ROOT.TFile.Open(self._Samples[iSample]['srmPrefix']+iFile) #, "READ") # for fnal!!!
+               os.system('xrdcp '+self._Samples[iSample]['srmPrefix']+iFile+' .')
+               iFile = iFile.split("/")[-1]
+               print(" iFile splitted ",iFile)
+               f = ROOT.TFile.Open(iFile, "READ")
+              #  f = ROOT.TFile.Open(self._Samples[iSample]['srmPrefix']+iFile) #, "READ") # for fnal!!!
             #  print (" srm prefix+iFile ", self._Samples[iSample]['srmPrefix']+iFile)
               # f = ROOT.TFile.Open(self._aaaXrootd+iFile, "READ")
             #  f = ROOT.TFile.Open(self._Samples[iSample]['srmPrefix']+iFile, "READ") # for fnal!!!
   
-             print f.Get("Runs")
              Runs = f.Get("Runs")
              for iRun in Runs :
-               print " iRun ",iRun
                trailer = ""
                if hasattr(iRun, "genEventSumw_"): trailer = "_" 
                if DEBUG : print '---> genEventSumw = ', getattr(iRun , "genEventSumw"+trailer)
@@ -787,6 +796,7 @@ class PostProcMaker():
                genEventSumw  += getattr(iRun, "genEventSumw"+trailer)
                genEventSumw2 += getattr(iRun, "genEventSumw2"+trailer)
              f.Close()
+             os.system('rm '+iFile)
            # get the X-section and baseW
            nEvt = genEventSumw
            baseW = float(Xsec)*1000./nEvt
