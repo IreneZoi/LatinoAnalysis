@@ -449,8 +449,9 @@ class batchJobs :
        jds += 'output = $(JName).out\n'
        jds += 'error = $(JName).err\n'
        jds += 'log = $(JName).log\n'
-       jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
-       jds += 'MY.WantOS = "el7"\n'
+      #  jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
+      #  jds += 'MY.WantOS = "el7"\n'
+       jds += 'MY.SingularityImage = "/cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/cms-cat/cmssw-lxplus/cmssw-el7-lxplus:latest/"\n'
        #jds += 'use_x509userproxy = true\n'
        jds += 'request_cpus = '+str(REQUEST_CPUS)+'\n'
        if CONDOR_ACCOUNTING_GROUP:
@@ -699,8 +700,9 @@ def batchResub(Dir='ALL',queue='longlunch',requestCpus=1,IiheWallTime='168:00:00
           jdsFile = open(subDir+'/'+jName+'.jds','w')
           jdsFile.write('executable = '+subDir+'/'+jName+'.sh\n')
           jdsFile.write('universe = vanilla\n')
-          jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
-          jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
+          jdsFile.write('MY.SingularityImage = "/cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/cms-cat/cmssw-lxplus/cmssw-el7-lxplus:latest/"\n')
+          # jdsFile.write('requirements = (OpSysAndVer =?= "CentOS7")\n') #testing from latinos mattermost
+          # jdsFile.write('MY.WantOS = "el7"\n') #testing from latinos mattermost
           jdsFile.write('output = '+subDir+'/'+jName+'.out\n')
           jdsFile.write('error = '+subDir+'/'+jName+'.err\n')
           jdsFile.write('log = '+subDir+'/'+jName+'.log\n')
