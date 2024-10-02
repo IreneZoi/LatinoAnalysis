@@ -118,12 +118,11 @@ class batchJobs :
          jFile.write('#$ -N '+jName+'\n')
          if CERN_USE_LSF:
            jFile.write('#$ -q all.q\n')
-           jFile.write('#$ -cwd\n')
-
+           jFile.write('#$ -cwd\n')           
+         jFile.write('export EOS_MGM_URL=root://eoscms.cern.ch\n')
          jFile.write('export X509_USER_PROXY=/afs/cern.ch/user/'+os.environ["USER"][:1]+'/'+os.environ["USER"]+'/.proxy\n')
          if 'latino' in hostName:
            jFile.write('export X509_USER_PROXY=/eos/user/'+os.environ["USER"][:1]+'/'+os.environ["USER"]+'/.proxy\n')
-           jFile.write('export EOS_MGM_URL=root://eoscms.cern.ch\n')
        elif "pi.infn.it" in socket.getfqdn():  
          jFile.write('#$ -N '+jName+'\n')
          jFile.write('export X509_USER_PROXY=/home/users/'+os.environ["USER"]+'/.proxy\n')
@@ -353,7 +352,8 @@ class batchJobs :
              jdsFile.write('on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)\n')
              jdsFile.write('periodic_release =  (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > (60*3))\n')
            jdsFile.write('request_cpus = '+str(REQUEST_CPUS)+'\n')
-           jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
+           jdsFile.write('MY.SingularityImage = "/cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/cms-cat/cmssw-lxplus/cmssw-el7-lxplus:latest/"\n')
+           #  jdsFile.write('requirements = (TARGET.OpSysAndVer =?= "CentOS7")\n')
            jdsFile.write('+JobFlavour = "'+queue+'"\n')
            jdsFile.write('queue\n')
            jdsFile.close()
@@ -446,8 +446,9 @@ class batchJobs :
        jds += 'output = $(JName).out\n'
        jds += 'error = $(JName).err\n'
        jds += 'log = $(JName).log\n'
-       jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
-       jds += 'MY.WantOS = "el7"\n'
+       jds += 'MY.SingularityImage = "/cvmfs/unpacked.cern.ch/gitlab-registry.cern.ch/cms-cat/cmssw-lxplus/cmssw-el7-lxplus:latest/"\n'
+       #  jds += 'requirements = (OpSysAndVer =?= "CentOS7")\n'
+       #  jds += 'MY.WantOS = "el7"\n'
        #jds += 'use_x509userproxy = true\n'
        jds += 'request_cpus = '+str(REQUEST_CPUS)+'\n'
        if CONDOR_ACCOUNTING_GROUP:
